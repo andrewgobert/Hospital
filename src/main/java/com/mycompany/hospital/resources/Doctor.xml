@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+<!DOCTYPE com.mycompany.hospital.dao.DoctorDao PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd">
+
+
+<com.mycompany.hospital.dao.DoctorDao>
+    <sql id="body">
+        p.liscense as liscense
+        p.fname as first
+        p.lname as last
+        p.address as address
+        p.phone as phone
+        p.office as office
+    </sql>
+    
+    <select id="getById" resultMap="doctorResultMap">
+        SELECT
+        <include refid="body"/>
+        FROM
+            patiants p
+        WHERE id = #{id}
+    </select>
+    
+    <resultMap id="doctorResultMap" type="com.solvd.course.db.binary.Car" autoMapping="false">
+        <id column="liscence" property="liscense"/>
+        <result column="first" property="fname"/>
+        <result column="last" property="lname"/>
+        <result column="address" property="address"/>
+        <result column="pcontact" property="pcontact"/>
+        <result column="scontact" property="scontact"/>
+        <result column="doctor" property="doctor"/>
+        <result column="office" property="office"/>
+    </resultMap>
+</com.mycompany.hospital.dao.DoctorDao>
+
